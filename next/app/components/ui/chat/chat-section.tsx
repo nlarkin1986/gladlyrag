@@ -14,7 +14,6 @@ import { fetchComponentDefinitions } from "./custom/events/loader";
 import { ComponentDef } from "./custom/events/types";
 import { DevModePanel } from "./dev-mode-panel";
 import { ChatLayout } from "./layout";
-import { SalesSidebar } from "./sales-sidebar";
 
 export default function ChatSection() {
   const handler = useChat({
@@ -38,15 +37,10 @@ export default function ChatSection() {
           handler={handler}
           className="relative flex min-h-0 flex-1 flex-row justify-center gap-4 px-4 py-0"
         >
-          <div className="flex w-full max-w-7xl gap-4">
-            <div className="hidden lg:block w-80">
-              <SalesSidebar />
-            </div>
-            <ResizablePanelGroup direction="horizontal" className="flex-1">
-              <ChatSectionPanel />
-              <ChatCanvasPanel />
-            </ResizablePanelGroup>
-          </div>
+          <ResizablePanelGroup direction="horizontal">
+            <ChatSectionPanel />
+            <ChatCanvasPanel />
+          </ResizablePanelGroup>
           <DevModePanel />
         </ChatUI>
       </ChatLayout>

@@ -56,12 +56,9 @@ function processWorkflowStream(
 
           // Handle agent events from AgentToolCall
           if (agentToolCallEvent.include(event)) {
-            const inputString = JSON.stringify(event.data.toolKwargs);
-            transformedEvent = toAgentRunEvent({
-              agent: event.data.agentName,
-              text: `Using tool: '${event.data.toolName}' with inputs: '${inputString}'`,
-              type: "text",
-            });
+            // Skip transforming tool call events to prevent debug messages
+            // from appearing in the chat UI
+            return;
           }
           // Handle source nodes from AgentToolCallResult
           else if (agentToolCallResultEvent.include(event)) {
