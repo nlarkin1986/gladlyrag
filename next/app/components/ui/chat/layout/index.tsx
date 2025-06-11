@@ -82,7 +82,9 @@ export function ChatLayout({ children }: { children: React.ReactNode }) {
         fallback={<DefaultHeader />}
       />
 
-      {children}
+      <main className="flex-1 overflow-hidden flex flex-col">
+        {children}
+      </main>
 
       <LayoutRenderer
         component={getLayoutCode("footer")}

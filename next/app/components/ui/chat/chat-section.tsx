@@ -73,17 +73,21 @@ function ChatSectionPanel() {
   }, []);
 
   return (
-    <ResizablePanel defaultSize={40} minSize={30} className="max-w-1/2 mx-auto">
-      <div className="flex h-full min-w-0 flex-1 flex-col gap-4">
+    <ResizablePanel defaultSize={40} minSize={30} className="max-w-1/2 mx-auto h-full">
+      <div className="flex h-full min-w-0 flex-1 flex-col relative">
         <DynamicEventsErrors
           errors={uniqueErrors}
           clearErrors={() => setDynamicEventsErrors([])}
         />
-        <CustomChatMessages
-          componentDefs={componentDefs}
-          appendError={appendError}
-        />
-        <CustomChatInput />
+        <div className="flex-1 overflow-hidden flex flex-col">
+          <CustomChatMessages
+            componentDefs={componentDefs}
+            appendError={appendError}
+          />
+        </div>
+        <div className="sticky bottom-0 bg-white border-t border-gray-200 shadow-lg z-10">
+          <CustomChatInput />
+        </div>
       </div>
     </ResizablePanel>
   );

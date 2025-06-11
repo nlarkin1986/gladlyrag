@@ -9,10 +9,10 @@ export function ChatStarter({ className }: { className?: string }) {
   const starterQuestions =
     getConfig("STARTER_QUESTIONS") ??
     JSON.parse(process.env.NEXT_PUBLIC_STARTER_QUESTIONS || JSON.stringify([
+      "Compare Gladly to Gorgias",
+      "Compare Gladly to Zendesk",
       "What are Gladly's key differentiators?",
-      "Tell me about Sidekick Voice capabilities",
-      "How does Gladly pricing compare to competitors?",
-      "What integrations does Gladly support?"
+      "Tell me about Sidekick Voice capabilities"
     ]));
 
   if (starterQuestions.length === 0 || messages.length > 0) return null;
