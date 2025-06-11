@@ -555,32 +555,40 @@
     animation: loadingDots 1.5s infinite;
   }
   
-  /* Enhanced Chat Layout */
-  [data-chat-section] {
-    display: flex;
-    flex-direction: column;
-    height: calc(100vh - 64px); /* Account for header */
-    max-height: calc(100vh - 64px);
-    position: relative;
+  /* Enhanced Chat Layout - More specific selectors */
+  .chat-section,
+  [data-chat-section],
+  div[class*="ChatSection"] {
+    display: flex !important;
+    flex-direction: column !important;
+    height: calc(100vh - 64px) !important;
+    max-height: calc(100vh - 64px) !important;
+    position: relative !important;
   }
   
-  /* Chat messages container */
-  [data-chat-messages] {
-    flex: 1;
-    overflow-y: auto;
-    padding-bottom: 20px;
-    max-height: calc(100vh - 200px); /* Leave room for input */
+  /* Chat messages container - target the actual scrollable area */
+  [data-chat-messages],
+  div[class*="ChatMessages"],
+  .chat-messages-container {
+    flex: 1 1 auto !important;
+    overflow-y: auto !important;
+    padding-bottom: 20px !important;
+    max-height: calc(100vh - 280px) !important;
+    min-height: 0 !important;
   }
   
-  /* Chat input positioning */
-  [data-chat-input] {
-    position: sticky;
-    bottom: 0;
-    background: white;
-    border-top: 1px solid hsl(var(--border));
-    padding: 20px;
-    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.05);
-    z-index: 10;
+  /* Chat input positioning - more specific */
+  [data-chat-input],
+  div[class*="ChatInput"],
+  .chat-input-container {
+    position: sticky !important;
+    bottom: 0 !important;
+    background: white !important;
+    border-top: 2px solid hsl(var(--border)) !important;
+    padding: 24px !important;
+    box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.08) !important;
+    z-index: 50 !important;
+    margin-top: auto !important;
   }
   
   /* Better container constraints */
@@ -624,16 +632,72 @@
   }
   
   /* Starter questions positioning */
-  [data-starter-questions] {
-    position: absolute;
-    bottom: 180px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 5;
-    background: white;
-    padding: 16px;
-    border-radius: var(--border-radius);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  [data-starter-questions],
+  div[class*="StarterQuestions"] {
+    position: absolute !important;
+    bottom: 180px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    z-index: 5 !important;
+    background: white !important;
+    padding: 16px !important;
+    border-radius: var(--border-radius) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+  }
+  
+  /* Global layout fixes for chat UI */
+  #__next > div > div {
+    display: flex !important;
+    flex-direction: column !important;
+    height: 100vh !important;
+  }
+  
+  /* Fix the chat container to use full height properly */
+  main > div > div {
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  
+  /* Ensure the chat section uses full available space */
+  div[class*="ResizablePanel"] {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  
+  /* Fix any overflow issues */
+  body {
+    overflow: hidden !important;
+  }
+  
+  /* Target the specific chat UI structure */
+  .flex.min-h-0.flex-1.flex-row {
+    height: 100% !important;
+  }
+  
+  /* Make sure the inner chat container is properly sized */
+  .flex.h-full.min-w-0.flex-1.flex-col {
+    position: relative !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  
+  /* Force the messages area to be scrollable */
+  .flex-1.overflow-hidden.flex.flex-col {
+    flex: 1 1 auto !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+  }
+  
+  /* Style the input area at the bottom */
+  .sticky.bottom-0.bg-white.border-t {
+    position: sticky !important;
+    bottom: 0 !important;
+    background: white !important;
+    border-top: 2px solid #e5e7eb !important;
+    box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.08) !important;
+    padding: 20px !important;
+    z-index: 50 !important;
   }
 }
 
